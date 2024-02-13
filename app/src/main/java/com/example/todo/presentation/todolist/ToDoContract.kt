@@ -1,4 +1,4 @@
-package com.example.todo.presentation
+package com.example.todo.presentation.todolist
 
 import com.example.todo.model.presentation.Task
 

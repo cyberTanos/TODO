@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:letterSpacing="0.05"
+        android:text="@string/toolbar_new_task"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/toolbar"
+        app:layout_constraintEnd_toEndOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="@id/toolbar"
+        app:layout_constraintTop_toTopOf="@id/toolbar" />
+
+    <TextView
+        android:id="@+id/saveTaskView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:letterSpacing="0.05"
+        android:text="@string/saveTaskButton"
+        android:textColor="@color/textHint"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/toolbar"
+        app:layout_constraintEnd_toEndOf="@id/toolbar"
+        app:layout_constraintTop_toTopOf="@id/toolbar" />
+
+    <ImageView
+        android:id="@+id/closeButton"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/close_button"
+        app:layout_constraintBottom_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="@id/toolbar"
+        app:layout_constraintTop_toTopOf="@id/toolbar" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/cardEditText"
+        app:cardCornerRadius="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <EditText
+            android:id="@+id/titleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:hint="@string/create_title_task"
+            android:letterSpacing="0.05"
+            android:textColorHint="@color/textHint" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardNotes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/cardEditText"
+        app:cardCornerRadius="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardTitle">
+
+        <EditText
+            android:id="@+id/notesEditText"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:hint="@string/create_notes_task"
+            android:letterSpacing="0.05"
+            android:textColorHint="@color/textHint" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/titleColorView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:letterSpacing="0.05"
+        android:text="@string/color_title"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardNotes" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerColor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleColorView"
+        tools:listitem="@layout/item_color" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

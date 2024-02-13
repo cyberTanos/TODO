@@ -1,4 +1,4 @@
-package com.example.todo.presentation
+package com.example.todo.presentation.todolist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todo.databinding.ItemTaskBinding
 import com.example.todo.model.presentation.Task
-import com.example.todo.presentation.ToDoAdapter.ToDoVH
+import com.example.todo.presentation.todolist.ToDoAdapter.ToDoVH
 
 class ToDoAdapter() : ListAdapter<Task, ToDoVH>(Differ) {
 

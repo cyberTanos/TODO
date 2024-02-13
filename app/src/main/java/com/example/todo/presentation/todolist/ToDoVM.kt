@@ -1,11 +1,11 @@
-package com.example.todo.presentation
+package com.example.todo.presentation.todolist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.todo.model.presentation.Task
-import com.example.todo.presentation.ToDoAction.InitScreen
-import com.example.todo.presentation.ToDoState.Loading
-import com.example.todo.presentation.ToDoState.Success
+import com.example.todo.presentation.todolist.ToDoAction.InitScreen
+import com.example.todo.presentation.todolist.ToDoState.Loading
+import com.example.todo.presentation.todolist.ToDoState.Success
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
