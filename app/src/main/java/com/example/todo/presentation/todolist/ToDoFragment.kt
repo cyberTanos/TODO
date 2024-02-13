@@ -1,4 +1,4 @@
-package com.example.todo.presentation
+package com.example.todo.presentation.todolist
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,8 +11,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.todo.R
 import com.example.todo.databinding.FragmentTodoBinding
-import com.example.todo.presentation.ToDoAction.InitScreen
-import com.example.todo.presentation.ToDoState.Success
+import com.example.todo.presentation.todolist.ToDoAction.InitScreen
+import com.example.todo.presentation.todolist.ToDoState.Success
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

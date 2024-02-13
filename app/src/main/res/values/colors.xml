@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="background">#FFFFFFFF</color>
+    <color name="background">#f9fbfc</color>
     <color name="button">#2196F3</color>
+    <color name="closeButton">#090E1E</color>
+    <color name="cardEditText">#E8EEF1</color>
+    <color name="textHint">#476885</color>
 </resources>
