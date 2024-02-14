@@ -5,4 +5,12 @@
     <color name="closeButton">#FFFFFFFF</color>
     <color name="cardEditText">#263545</color>
     <color name="textHint">#9eb2c7</color>
+    <color name="itemPink">#fa9fff</color>
+    <color name="itemOrange">#ff730b</color>
+    <color name="itemYellow">#fce300</color>
+    <color name="itemLightGreen">#b3d236</color>
+    <color name="itemGreen">#289a5f</color>
+    <color name="itemPurple">#a04df3</color>
+    <color name="itemBlue">#4DA0F3</color>
+    <color name="itemLightBlue">#B2F9DD</color>
 </resources>
