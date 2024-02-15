@@ -5,6 +5,7 @@ import com.example.todo.R
 import com.example.todo.model.presentation.Task.Color.PINK
 
 data class Task(
+    val id: Int = 0,
     val title: String,
     val notes: String = "",
     val color: Color = PINK,
