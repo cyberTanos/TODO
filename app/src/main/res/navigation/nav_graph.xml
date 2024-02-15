@@ -9,16 +9,16 @@
         android:id="@+id/toDoFragment"
         android:name="com.example.todo.presentation.todolist.ToDoFragment"
         android:label="ToDoFragment"
-        tools:layout="@layout/fragment_todo" >
+        tools:layout="@layout/fragment_todo">
         <action
             android:id="@+id/to_taskFragment"
             app:destination="@id/taskFragment" />
     </fragment>
     <fragment
         android:id="@+id/taskFragment"
-        android:name="com.example.todo.presentation.createtask.CreateTaskFragment"
+        android:name="com.example.todo.presentation.createtask.CreateTaskBottomSheet"
         android:label="TaskFragment"
-        tools:layout="@layout/fragment_task">
+        tools:layout="@layout/bottom_sheet_create_task">
         <action
             android:id="@+id/to_toDoFragment"
             app:destination="@id/toDoFragment" />

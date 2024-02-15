@@ -1,19 +1,31 @@
 package com.example.todo.presentation.createtask
 
-import com.example.todo.R
-import com.example.todo.model.presentation.Task.Color
+import com.example.todo.model.presentation.TaskColor
 
 interface CreateTaskAction {
     object InitScreen : CreateTaskAction
+    data class OnColorClickTask(
+        val taskColor: TaskColor
+    ) : CreateTaskAction
+
+    object OnClickCloseTask : CreateTaskAction
+
     data class OnCLickSaveTask(
         val title: String,
-        val notes: String = "",
-        val color: Int = R.color.itemPink
+        val notes: String = ""
     ) : CreateTaskAction
 }
 
 interface CreateTaskState {
     data class Success(
-        val colors: List<Color> = Color.entries
+        val colors: List<TaskColor> = emptyList()
     ) : CreateTaskState
+
+    data class Error(
+        val message: String
+    ) : CreateTaskState
+}
+
+interface CreateTaskEffect {
+    object CloseScreen : CreateTaskEffect
 }
