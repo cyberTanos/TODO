@@ -4,7 +4,7 @@
     <string name="title_task">Позавтракать</string>
     <string name="toolbar_new_task">New Task</string>
     <string name="create_title_task">Title</string>
-    <string name="create_notes_task">Notes(Необязательно)</string>
+    <string name="create_notes_task">Notes(необязательно)</string>
     <string name="color_title">Color</string>
     <string name="saveTaskButton">Save</string>
 </resources>

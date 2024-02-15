@@ -1,7 +1,6 @@
 package com.example.todo.model.presentation
 
 import androidx.annotation.ColorRes
-import androidx.annotation.IdRes
 import com.example.todo.R
 import com.example.todo.model.presentation.Task.Color.PINK
 

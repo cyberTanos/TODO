@@ -11,7 +11,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.todo.R
 import com.example.todo.databinding.FragmentTodoBinding
-import com.example.todo.presentation.createtask.CreateTaskFragment
+import com.example.todo.presentation.createtask.CreateTaskBottomSheet
+import com.example.todo.presentation.createtask.CreateTaskBottomSheet.Companion.TAG
 import com.example.todo.presentation.todolist.ToDoAction.InitScreen
 import com.example.todo.presentation.todolist.ToDoState.Success
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,10 +27,10 @@ class ToDoFragment : Fragment(R.layout.fragment_todo) {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentTodoBinding.inflate(inflater, container, false)
+
         bindUI()
         observeState()
         vm.doAction(InitScreen)
-
 
         return binding.root
     }
@@ -37,7 +38,7 @@ class ToDoFragment : Fragment(R.layout.fragment_todo) {
     private fun bindUI() {
         binding.recyclerTasks.adapter = adapter
         binding.addButton.setOnClickListener {
-            CreateTaskFragment().show(childFragmentManager, "jjj")
+            CreateTaskBottomSheet().show(childFragmentManager, TAG)
         }
     }
 

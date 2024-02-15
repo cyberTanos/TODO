@@ -8,8 +8,18 @@
         android:id="@+id/colorTask"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:background="@drawable/color_button"
+        android:background="@drawable/ic_task_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/selected"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/ic_selected"
+        app:layout_constraintBottom_toBottomOf="@id/colorTask"
+        app:layout_constraintEnd_toEndOf="@id/colorTask"
+        app:layout_constraintStart_toStartOf="@id/colorTask"
+        app:layout_constraintTop_toTopOf="@id/colorTask" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

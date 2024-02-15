@@ -5,6 +5,7 @@
     <color name="closeButton">#090E1E</color>
     <color name="cardEditText">#E8EEF1</color>
     <color name="textHint">#476885</color>
+    <color name="error">#F44336</color>
     <color name="itemPink">#fa9fff</color>
     <color name="itemOrange">#ff730b</color>
     <color name="itemYellow">#fce300</color>
