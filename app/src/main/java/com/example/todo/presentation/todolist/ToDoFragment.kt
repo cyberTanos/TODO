@@ -14,6 +14,7 @@ import com.example.todo.databinding.FragmentTodoBinding
 import com.example.todo.presentation.createtask.CreateTaskBottomSheet
 import com.example.todo.presentation.createtask.CreateTaskBottomSheet.Companion.TAG
 import com.example.todo.presentation.todolist.ToDoAction.InitScreen
+import com.example.todo.presentation.todolist.ToDoAction.OnClickCheckSaveTask
 import com.example.todo.presentation.todolist.ToDoState.Success
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -23,7 +24,9 @@ class ToDoFragment : Fragment(R.layout.fragment_todo) {
 
     private lateinit var binding: FragmentTodoBinding
     private val vm: ToDoVM by viewModels()
-    private val adapter = ToDoAdapter()
+    private val adapter = ToDoAdapter { task ->
+        vm.doAction(OnClickCheckSaveTask(task))
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentTodoBinding.inflate(inflater, container, false)
@@ -38,7 +41,9 @@ class ToDoFragment : Fragment(R.layout.fragment_todo) {
     private fun bindUI() {
         binding.recyclerTasks.adapter = adapter
         binding.addButton.setOnClickListener {
-            CreateTaskBottomSheet().show(childFragmentManager, TAG)
+            CreateTaskBottomSheet {
+                vm.doAction(InitScreen)
+            }.show(childFragmentManager, TAG)
         }
     }
 

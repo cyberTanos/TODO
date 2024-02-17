@@ -39,7 +39,7 @@ class ColorsAdapter(private val onColorClick: (TaskColor) -> Unit) : ListAdapter
 
     object Differ : DiffUtil.ItemCallback<TaskColor>() {
         override fun areItemsTheSame(oldItem: TaskColor, newItem: TaskColor): Boolean {
-            return oldItem == newItem
+            return oldItem.color == newItem.color
         }
 
         override fun areContentsTheSame(oldItem: TaskColor, newItem: TaskColor): Boolean {

@@ -2,6 +2,8 @@ package com.example.todo.presentation.createtask
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.todo.domain.TaskRepository
+import com.example.todo.model.presentation.Task
 import com.example.todo.model.presentation.Task.Color
 import com.example.todo.model.presentation.TaskColor
 import com.example.todo.presentation.createtask.CreateTaskAction.InitScreen
@@ -20,6 +22,7 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 class CreateTaskVM @Inject constructor(
+    private val repository: TaskRepository
 
 ) : ViewModel() {
 
@@ -63,6 +66,7 @@ class CreateTaskVM @Inject constructor(
                 val messError = "Пустое поле"
                 state.value = Error(message = messError)
             } else {
+                repository.saveTask(Task(title = title, notes = notes, color = selectedColor))
                 _effect.trySend(CloseScreen)
             }
         }

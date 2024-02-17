@@ -8,26 +8,42 @@
 
     <View
         android:id="@+id/colorThemeTaskView"
-        android:layout_width="2dp"
+        android:layout_width="4dp"
         android:layout_height="28dp"
         android:layout_marginStart="16dp"
         android:background="@drawable/view_task_color"
-        app:layout_constraintBottom_toBottomOf="@+id/titleTaskTextView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/titleTaskTextView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/titleTaskTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="18dp"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/notesTaskTextView"
+        app:layout_constraintEnd_toStartOf="@+id/check"
+        app:layout_constraintStart_toStartOf="@id/colorThemeTaskView"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/title_task" />
+
+    <TextView
+        android:id="@+id/notesTaskTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginBottom="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/textHint"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/check"
+        app:layout_constraintStart_toStartOf="@id/colorThemeTaskView"
+        tools:text="@string/notes_task" />
 
     <CheckBox
         android:id="@+id/check"
