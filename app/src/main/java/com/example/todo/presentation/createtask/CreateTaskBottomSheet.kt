@@ -22,7 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class CreateTaskBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet_create_task) {
+class CreateTaskBottomSheet(val onCloseBottom: () -> Unit) : BottomSheetDialogFragment(R.layout.bottom_sheet_create_task) {
 
     private lateinit var binding: BottomSheetCreateTaskBinding
     private val vm: CreateTaskVM by viewModels()
@@ -75,9 +75,11 @@ class CreateTaskBottomSheet : BottomSheetDialogFragment(R.layout.bottom_sheet_cr
             repeatOnLifecycle(Lifecycle.State.CREATED) {
                 vm.effect.collect { effect ->
                     when (effect) {
-                        is CloseScreen -> dismiss()
+                        is CloseScreen -> {
+                            onCloseBottom.invoke()
+                            dismiss()
+                        }
                     }
-
                 }
             }
         }

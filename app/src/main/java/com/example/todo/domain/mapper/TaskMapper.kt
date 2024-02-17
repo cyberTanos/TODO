@@ -17,11 +17,12 @@ fun List<TaskEntity>.toPresentation(): List<Task> {
     return this.map { it.toPresentation() }
 }
 
-fun Task.toPresentation(): TaskEntity {
+fun Task.toData(): TaskEntity {
     return TaskEntity(
+        id = id,
         title = title,
         notes = notes,
         color = color,
-        isCompleted = false
+        isCompleted = isCompleted
     )
 }

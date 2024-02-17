@@ -4,6 +4,9 @@ import com.example.todo.model.presentation.Task
 
 interface ToDoAction {
     object InitScreen : ToDoAction
+    data class OnClickCheckSaveTask(
+        val task: Task
+    ) : ToDoAction
 }
 
 interface ToDoState {
