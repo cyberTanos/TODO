@@ -7,6 +7,8 @@ interface ToDoAction {
     data class OnClickCheckSaveTask(
         val task: Task
     ) : ToDoAction
+
+    object OnClickSettings : ToDoAction
 }
 
 interface ToDoState {
@@ -14,4 +16,8 @@ interface ToDoState {
     data class Success(
         val tasks: List<Task>
     ) : ToDoState
+}
+
+interface ToDoEffect {
+    object SettingsEffect : ToDoEffect
 }
