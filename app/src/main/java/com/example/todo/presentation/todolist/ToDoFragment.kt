@@ -9,12 +9,15 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.example.todo.R
 import com.example.todo.databinding.FragmentTodoBinding
 import com.example.todo.presentation.createtask.CreateTaskBottomSheet
 import com.example.todo.presentation.createtask.CreateTaskBottomSheet.Companion.TAG
 import com.example.todo.presentation.todolist.ToDoAction.InitScreen
 import com.example.todo.presentation.todolist.ToDoAction.OnClickCheckSaveTask
+import com.example.todo.presentation.todolist.ToDoAction.OnClickSettings
+import com.example.todo.presentation.todolist.ToDoEffect.SettingsEffect
 import com.example.todo.presentation.todolist.ToDoState.Success
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -33,6 +36,7 @@ class ToDoFragment : Fragment(R.layout.fragment_todo) {
 
         bindUI()
         observeState()
+        observeEffect()
         vm.doAction(InitScreen)
 
         return binding.root
@@ -45,6 +49,9 @@ class ToDoFragment : Fragment(R.layout.fragment_todo) {
                 vm.doAction(InitScreen)
             }.show(childFragmentManager, TAG)
         }
+        binding.settingsButton.setOnClickListener {
+            vm.doAction(OnClickSettings)
+        }
     }
 
     private fun observeState() {
@@ -53,6 +60,18 @@ class ToDoFragment : Fragment(R.layout.fragment_todo) {
                 vm.state.collect { state ->
                     if (state is Success) {
                         adapter.submitList(state.tasks)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun observeEffect() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
+                vm.effect.collect { effect ->
+                    when (effect) {
+                        is SettingsEffect -> findNavController().navigate(R.id.to_settingsFragment)
                     }
                 }
             }

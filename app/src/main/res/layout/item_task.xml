@@ -38,7 +38,7 @@
         android:layout_marginBottom="8dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:textColor="@color/textHint"
+        android:textColor="@color/textNotesTask"
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/check"

@@ -3,8 +3,15 @@
     <color name="background">#f9fbfc</color>
     <color name="button">#2196F3</color>
     <color name="closeButton">#090E1E</color>
+    <color name="backButton">#090E1E</color>
+    <color name="settingsButton">#090E1E</color>
+    <color name="imageTheme">#d9dbdf</color>
+    <color name="divider">#E8EEF1</color>
     <color name="cardEditText">#E8EEF1</color>
+    <color name="switchTrack">#d9dbdf</color>
+    <color name="switchThumb">#f9fbfc</color>
     <color name="textHint">#476885</color>
+    <color name="textNotesTask">#476885</color>
     <color name="error">#F44336</color>
     <color name="itemPink">#fa9fff</color>
     <color name="itemOrange">#ff730b</color>
