@@ -22,7 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class CreateTaskBottomSheet(val onCloseBottom: () -> Unit) : BottomSheetDialogFragment(R.layout.bottom_sheet_create_task) {
+class CreateTaskBottomSheet(private val onCloseBottom: () -> Unit) : BottomSheetDialogFragment(R.layout.bottom_sheet_create_task) {
 
     private lateinit var binding: BottomSheetCreateTaskBinding
     private val vm: CreateTaskVM by viewModels()

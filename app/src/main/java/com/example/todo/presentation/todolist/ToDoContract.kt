@@ -4,6 +4,10 @@ import com.example.todo.model.presentation.Task
 
 interface ToDoAction {
     object InitScreen : ToDoAction
+    data class OnClickTask(
+        val task: Task
+    ) : ToDoAction
+
     data class OnClickCheckSaveTask(
         val task: Task
     ) : ToDoAction
@@ -19,5 +23,8 @@ interface ToDoState {
 }
 
 interface ToDoEffect {
-    object SettingsEffect : ToDoEffect
+    object NavigateSettingsEffect : ToDoEffect
+    data class NavigateInfoTaskEffect(
+        val task: Task
+    ) : ToDoEffect
 }
