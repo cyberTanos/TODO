@@ -13,7 +13,7 @@ import com.example.todo.databinding.ItemTaskBinding
 import com.example.todo.model.presentation.Task
 import com.example.todo.presentation.todolist.ToDoAdapter.ToDoVH
 
-class ToDoAdapter(private val onClickCheck: (Task) -> Unit) : ListAdapter<Task, ToDoVH>(Differ) {
+class ToDoAdapter(private val onClickTask: (Task) -> Unit, private val onClickCheck: (Task) -> Unit) : ListAdapter<Task, ToDoVH>(Differ) {
 
     inner class ToDoVH(private val binding: ItemTaskBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(task: Task) {
@@ -28,6 +28,10 @@ class ToDoAdapter(private val onClickCheck: (Task) -> Unit) : ListAdapter<Task, 
 
             binding.colorThemeTaskView.background.colorFilter =
                 BlendModeColorFilter(binding.root.context.getColor(task.color.colorId), SRC_ATOP)
+
+            binding.root.setOnClickListener {
+                onClickTask.invoke(task)
+            }
 
             binding.check.setOnClickListener {
                 onClickCheck.invoke(task)

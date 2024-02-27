@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -14,10 +15,13 @@ import com.example.todo.R
 import com.example.todo.databinding.FragmentTodoBinding
 import com.example.todo.presentation.createtask.CreateTaskBottomSheet
 import com.example.todo.presentation.createtask.CreateTaskBottomSheet.Companion.TAG
+import com.example.todo.presentation.infotask.InfoTaskFragment
 import com.example.todo.presentation.todolist.ToDoAction.InitScreen
 import com.example.todo.presentation.todolist.ToDoAction.OnClickCheckSaveTask
 import com.example.todo.presentation.todolist.ToDoAction.OnClickSettings
-import com.example.todo.presentation.todolist.ToDoEffect.SettingsEffect
+import com.example.todo.presentation.todolist.ToDoAction.OnClickTask
+import com.example.todo.presentation.todolist.ToDoEffect.NavigateInfoTaskEffect
+import com.example.todo.presentation.todolist.ToDoEffect.NavigateSettingsEffect
 import com.example.todo.presentation.todolist.ToDoState.Success
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -27,9 +31,14 @@ class ToDoFragment : Fragment(R.layout.fragment_todo) {
 
     private lateinit var binding: FragmentTodoBinding
     private val vm: ToDoVM by viewModels()
-    private val adapter = ToDoAdapter { task ->
-        vm.doAction(OnClickCheckSaveTask(task))
-    }
+    private val adapter = ToDoAdapter(
+        onClickTask = { task ->
+            vm.doAction(OnClickTask(task))
+        },
+        onClickCheck = { task ->
+            vm.doAction(OnClickCheckSaveTask(task))
+        }
+    )
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentTodoBinding.inflate(inflater, container, false)
@@ -71,7 +80,11 @@ class ToDoFragment : Fragment(R.layout.fragment_todo) {
             repeatOnLifecycle(Lifecycle.State.CREATED) {
                 vm.effect.collect { effect ->
                     when (effect) {
-                        is SettingsEffect -> findNavController().navigate(R.id.to_settingsFragment)
+                        is NavigateSettingsEffect -> findNavController().navigate(R.id.to_settingsFragment)
+                        is NavigateInfoTaskEffect -> findNavController().navigate(
+                            R.id.to_infoTaskFragment,
+                            bundleOf(InfoTaskFragment.TASK_INFO_KEY to effect.task)
+                        )
                     }
                 }
             }

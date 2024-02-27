@@ -7,7 +7,9 @@ import com.example.todo.model.presentation.Task
 import com.example.todo.presentation.todolist.ToDoAction.InitScreen
 import com.example.todo.presentation.todolist.ToDoAction.OnClickCheckSaveTask
 import com.example.todo.presentation.todolist.ToDoAction.OnClickSettings
-import com.example.todo.presentation.todolist.ToDoEffect.SettingsEffect
+import com.example.todo.presentation.todolist.ToDoAction.OnClickTask
+import com.example.todo.presentation.todolist.ToDoEffect.NavigateInfoTaskEffect
+import com.example.todo.presentation.todolist.ToDoEffect.NavigateSettingsEffect
 import com.example.todo.presentation.todolist.ToDoState.Loading
 import com.example.todo.presentation.todolist.ToDoState.Success
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,12 +24,13 @@ class ToDoVM @Inject constructor(
     private val repository: TaskRepository
 ) : ViewModel() {
     val state = MutableStateFlow<ToDoState>(Loading)
-    private val _effect = Channel<SettingsEffect>()
+    private val _effect = Channel<ToDoEffect>()
     val effect = _effect.receiveAsFlow()
 
     fun doAction(action: ToDoAction) {
         when (action) {
             is InitScreen -> fetchTasks()
+            is OnClickTask -> navigationInInfoTask(action.task)
             is OnClickCheckSaveTask -> changeStateTask(action.task)
             is OnClickSettings -> navigationInSettings()
         }
@@ -49,6 +52,10 @@ class ToDoVM @Inject constructor(
     }
 
     private fun navigationInSettings() {
-        _effect.trySend(SettingsEffect)
+        _effect.trySend(NavigateSettingsEffect)
+    }
+
+    private fun navigationInInfoTask(task: Task) {
+        _effect.trySend(NavigateInfoTaskEffect(task))
     }
 }

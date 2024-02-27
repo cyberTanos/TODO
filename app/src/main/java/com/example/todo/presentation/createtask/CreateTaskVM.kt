@@ -17,16 +17,17 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 @HiltViewModel
 class CreateTaskVM @Inject constructor(
     private val repository: TaskRepository
-
 ) : ViewModel() {
 
-    val state = MutableStateFlow<CreateTaskState>(CreateTaskState.Success())
+    private val _state = MutableStateFlow<CreateTaskState>(Success())
+    val state = _state.asStateFlow()
     private val _effect = Channel<CreateTaskEffect>()
     val effect = _effect.receiveAsFlow()
     private var selectedColor = Color.PINK
@@ -45,7 +46,7 @@ class CreateTaskVM @Inject constructor(
             val taskColors = Color.entries.map { color ->
                 TaskColor(color, color == selectedColor)
             }
-            state.value = Success(taskColors)
+            _state.value = Success(taskColors)
         }
     }
 
@@ -64,7 +65,7 @@ class CreateTaskVM @Inject constructor(
         viewModelScope.launch {
             if (title.isEmpty()) {
                 val messError = "Пустое поле"
-                state.value = Error(message = messError)
+                _state.value = Error(message = messError)
             } else {
                 repository.saveTask(Task(title = title, notes = notes, color = selectedColor))
                 _effect.trySend(CloseScreen)

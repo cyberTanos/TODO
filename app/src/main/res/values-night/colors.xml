@@ -4,6 +4,7 @@
     <color name="button">#2196F3</color>
     <color name="closeButton">#FFFFFFFF</color>
     <color name="backButton">#FFFFFFFF</color>
+    <color name="deleteButton">#FFFFFFFF</color>
     <color name="settingsButton">#FFFFFFFF</color>
     <color name="imageTheme">#d9dbdf</color>
     <color name="divider">#263545</color>
