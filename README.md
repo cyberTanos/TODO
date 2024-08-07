@@ -11,4 +11,3 @@ DataBase: Room
 <img src="https://github.com/user-attachments/assets/5cb9942f-bb64-4ecf-a4fb-044d4ad8aa2e" width="200" />
 <img src="https://github.com/user-attachments/assets/e9d3bd51-dabb-4bc3-ad52-3b4e9c1a9344" width="200" />
 <img src="https://github.com/user-attachments/assets/231f2906-1790-4bf2-949c-f52a103362f8" width="200" />
-<img src="https://github.com/user-attachments/assets/0d0c97a2-d145-45d9-98c0-64e8db666b4d" width="200" />
